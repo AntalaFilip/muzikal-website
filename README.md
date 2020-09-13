@@ -1,1 +1,0 @@
-The website code for a school project :)
