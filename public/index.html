@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!--- Footer font stylesheet -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kanit:100,200,300,400,500,600,700,800,900">
+    <!--- Main stylesheet -->
+    <link rel="stylesheet" href="index.css">
+    <!--- Meta -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <title>Muzikál</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <!--- Navigation bar -->
+    <nav class="nav">
+      <button onclick="redirHome()">Domov</button>
+      <button onclick="redirAbout()">O projekte</button>
+      <button onclick="redirRegistration()">Lístky</button>
+      <button onclick="redirBlog()">Blog</button>
+      <button style="float: right;" onclick="redirContact()">Kontakt</button>
+      <button style="float: right;" onclick="redirTeam()">Náš team</button>
+    </nav>
+    <!--- Rendered by React -->
+    <div id="root"></div>
+    <!--- Footer -->
+    <footer class="footer">
+      <div class="footer-div">
+        <small class="footer-text">&copy; 2020 Filip Antala | Designed by Filip Antala</small>
+      </div>
+    </footer>
+  </body>
+  <script>
+    function redirHome() {
+      location.href = "/";
+    }
+    function redirAbout() {
+      location.href = "/about";
+    }
+    function redirRegistration() {
+      location.href = "/registration";
+    }
+    function redirBlog() {
+      location.href = "http://sovyrobiamuzikal.blogspot.com";
+    }
+    function redirContact() {
+      location.href = "/contact";
+    }
+    function redirTeam() {
+      location.href = "/team";
+    }
+  </script>
+</html>

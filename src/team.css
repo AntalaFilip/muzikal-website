@@ -1,0 +1,18 @@
+.team h1 {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    text-align: center;
+    font-family: 'Kanit', sans-serif;
+    font-size: 60px;
+    text-transform: uppercase;
+}
+.team h2 {
+    text-align: center;
+    font-family: 'Kanit', sans-serif;
+    font-size: 30px;
+    text-transform: uppercase;
+}
+
+.team-div {
+    text-align: center;
+}

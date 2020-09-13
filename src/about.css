@@ -1,0 +1,17 @@
+.about h1 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    font-family: 'Kanit', sans-serif;
+    font-size: 60px;
+    text-transform: uppercase;
+}
+.about p {
+    font-size: 18px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+.about-div {
+    text-align: center;
+}
