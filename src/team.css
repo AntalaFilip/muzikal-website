@@ -1,3 +1,61 @@
+@media only screen and (max-width: 600px) {
+    .division {
+        width: 100% !important;
+        margin-left: 2% !important;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .division {
+        float: left;
+        width: 29%;
+    }
+    .manazeri {
+        margin-bottom: auto !important;
+    }
+    .scenaristi {
+        margin-bottom: auto;
+    }
+    .herci {
+        margin-bottom: auto;
+    }
+}
+
+@media only screen and (max-width: 1500px) {
+    .division {
+        float: left;
+        width: 27%;
+    }
+    .manazeri {
+        margin-bottom: 150px;
+    }
+}
+@media only screen and (max-width: 1800px) {
+    .team .division {
+        margin-left: 3% !important;
+        padding-left: 2% !important;
+    }
+}
+@media only screen and (max-width: 1700px) {
+    .team .division {
+        margin-left: 2.5% !important;
+        padding-left: 1.8% !important;
+    }
+}
+@media only screen and (max-width: 1600px) {
+    .team .division {
+        margin-left: 2% !important;
+        padding-left: 1.5% !important;
+    }
+}
+@media only screen and (max-width: 1500px) {
+    .team .division {
+        margin-left: 1.5% !important;
+        padding-left: 1% !important;
+    }
+}
+
+
+
 .team .header h1 {
     padding-top: 20px;
     padding-bottom: 10px;
@@ -40,4 +98,5 @@
 }
 .team .hudobnici {
     border-color: rgb(2, 177, 177);
+    margin-bottom: 100px;
 }
