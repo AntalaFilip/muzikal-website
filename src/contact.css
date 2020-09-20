@@ -1,0 +1,50 @@
+@media only screen and (max-width: 1024px) {
+    .contact .embedmap {
+        display: none !important;
+    }
+    .contact .emails {
+        width: auto !important;
+        margin-left: auto !important;
+        position: relative !important;
+    }
+    .contact .felix {
+        width: auto !important;
+        margin-left: auto !important;
+        margin-top: 20px !important;
+        position: relative !important;
+    }
+}
+.contact .header h1 {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    text-align: center;
+    font-family: 'Kanit', sans-serif;
+    font-size: 60px;
+    text-transform: uppercase;
+}
+.contact .embedmap {
+    border: 2px solid red;
+    float: right;
+    margin-top: 50px;
+    margin-right: 70px;
+}
+.contact .text {
+    margin-left: 90px;
+    padding: 10px;
+    font-size: 18px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.contact .emails {
+    width: 550px;
+    position: absolute;
+    border: 2px solid blue;
+}
+.contact .felix {
+    position: absolute;
+    width: 550px;
+    border: 2px solid green;
+    margin-top: 200px;
+}
+.contact .felix h2 {
+    text-align: center;
+}

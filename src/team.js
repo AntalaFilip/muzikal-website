@@ -5,17 +5,19 @@ export default function Team() {
     return (
         <div class="team">
             <div class="header">
-                <h1>Náš Soví team</h1>
+                <h1>Náš team</h1>
             </div>
             <div>
                 <div class="division herci">
                     <h2>Herci</h2> 
                     <p>Adela Zemaníková ako <em>Ashley Cooperová</em></p>
-                    <p>Leo Rehúš ako <em>postava</em></p>
+                    <p>Leo Rehúš ako <em>Detektív Brandon Jones</em></p>
                     <p>Libor Byrtus ako <em>postava</em></p>
+                    <p>Samo Pekarčík ako <em>Donte Norton</em></p>
                     <p>Martin Krchnavý ako <em>postava</em></p>
-                    <p>Michal Földeš ako <em>postava</em></p>
+                    <p>Michal Földeš ako <em>Ethan Verner</em></p>
                     <p>Matúš Košťál ako <em>postava</em></p>
+                    <p>Michal Čmelík ako <em>Steve Green</em></p>
                 </div>
                 <div class="division scenaristi">
                     <h2>Scenáristi</h2>
@@ -46,6 +48,7 @@ export default function Team() {
                     <h2>Hudobníci</h2>
                     <p>Martin Krchnavý</p>
                     <p>Matúš Košťál</p>
+                    <p>Adela Zemaníková</p>
                 </div>
             </div>
         </div>
