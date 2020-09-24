@@ -9,11 +9,11 @@ export default function Contact() {
             </div>
             <div class="text emails">
                 <p>Ak máte nejakú otázku, môžete nám napísať na tieto maily:</p>
-                <e>Lístky: </e><a href="mailto:rezervacie@domena.sk">rezervacie@domena.sk</a><e> / </e><a href="mailto:listky@domena.sk">listky@domena.sk</a>
+                <e>Lístky: </e><a href="mailto:rezervacie@muzikalvrazdapodlaobete.sk">rezervacie@muzikalvrazdapodlaobete.sk</a>
                 <br />
-                <e>Sponzorstvo: </e><a href="mailto:sponzorstvo@domena.sk">sponzorstvo@domena.sk</a>
+                <e>Sponzorstvo: </e><a href="mailto:sponzorstvo@muzikalvrazdapodlaobete.sk">sponzorstvo@muzikalvrazdapodlaobete.sk</a>
                 <br />
-                <e>Otázky a pod: </e><a href="mailto:filip@domena.sk">filip@domena.sk</a>
+                <e>Otázky a pod: </e><a href="mailto:filip@muzikalvrazdapodlaobete.sk">filip@muzikalvrazdapodlaobete.sk</a>
             </div>
             <div class="text felix">
                 <a href="http://felix.edupage.org"><h2>Škola Felix</h2></a>
