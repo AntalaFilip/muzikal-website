@@ -38,15 +38,15 @@ app.post('/registerticket', (req, res) => {
     con.query(sql, function (err, result) {
         if (err) throw err;
         console.log("Inserted!")
-
+        var id = result.insertId;
         transporter.sendMail({
             from: 'automailer@muzikalvrazdapodlaobete.sk',
             replyTo: "rezervacie@muzikalvrazdapodlaobete.sk",
             to: req.body.email,
             bcc: "rezervacie@muzikalvrazdapodlaobete.sk",
-            subject: "Rezervácia č. " + result.insertId,
-            text: "test",
-            html: '<p>test</p>',
+            subject: `Rezervácia č. ${id}`,
+            text: `Dobrý deň, ${name}. \r\n Vašu rezerváciu (${id}) sme úspešne zaznamenali. \r\n Ďakujeme vám - tím muzikálu Vražda podľa obete.`,
+            html: `<p>Dobrý deň, ${name}.</p><br/><p>Vašu rezerváciu (${id} sme úspešne zaznamenali.</p><br/><p>Ďakujeme vám - tím muzikálu Vražda podľa obete</p>`,
         });
 
     });
