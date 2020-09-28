@@ -10,14 +10,19 @@ class Registration extends React.Component {
             email: '',
             qty: '',
             origin: '',
-            mailSent: false,
+            done: true,
             error: null
         }
     }
     render() {
         return (
-            <div class="registration">
-                <form action="#">
+            <div className="reg">
+                <div className="header">
+                    <h1>Rezervujte si lístky!</h1>
+                </div>
+                <div className="form">
+                {!this.state.done && 
+                    <form action="#">
                     <input type="text" id="name" name="name" placeholder="Meno a priezvisko.."
                         value={this.state.name}
                         onChange={e => this.setState({ name: e.target.value })}
@@ -37,24 +42,30 @@ class Registration extends React.Component {
                         onChange={e => this.setState({ origin: e.target.value })}
                         required
                     />
-                    <label for="int">Mám dieťa vo Felixe / som z Felixu</label><br/>
+                    <label htmlFor="int">Mám dieťa vo Felixe / som z Felixu</label><br/>
                     <input type="radio" id="origin ext" name="origin" value="ext" 
                         onChange={e => this.setState({ origin: e.target.value })}
                         required
                     />
-                    <label for="ext">Nie som z Felixu</label><br/>
+                    <label htmlFor="ext">Nie som z Felixu</label><br/>
                     <br/>
                     <input type="submit" onClick={e => this.handleFormSubmit(e)} value="Submit" />
-                    <div>
-                        {this.state.mailSent &&
-                        <div>Vaša rezervácia bola zaevidovaná, ďakujeme!</div> }
+                </form>}
+                <div className="hidden">
+                        {this.state.done &&
+                        <div className="after">
+                            <p>Vaša rezervácia bola zaevidovaná, ďakujeme!</p>
+                            <em>Psst, skontrolujte si email :)</em><br/>
+                            <button 
+                            onClick={this.setState({done: false})}
+                            >Nová rezervácia</button>
+                        </div> }
                     </div>
-                </form>
+                </div>
             </div>
         )
     }
     handleFormSubmit = e => {
-        e.preventDefault();
         axios ({
             method: 'post',
             url: 'http://localhost:5000/registerticket',
@@ -63,7 +74,7 @@ class Registration extends React.Component {
         })
         .then(result => {
             this.setState({
-                mailSent: result.data.sent
+                done: result.data.sent
             })
         })
         .catch(error => this.setState({ error: error.message}));

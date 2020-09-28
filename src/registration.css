@@ -1,9 +1,11 @@
-.registration {
+.reg .form {
     max-width: 420px;
     margin: 0 auto;
     margin-top: 100px;
+    padding: 20px;
+    border: 2px solid black;
 }
-input[type=text],input[type=email],input[type=number], select, textarea {
+.form input[type=text],input[type=email],input[type=number], select, textarea {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -13,7 +15,7 @@ input[type=text],input[type=email],input[type=number], select, textarea {
     margin-bottom: 16px;
     resize: vertical;
 }
-input[type=submit] {
+.form input[type=submit] {
     background-color: #4CAF50;
     color: white;
     padding: 12px 20px;
@@ -21,15 +23,22 @@ input[type=submit] {
     border-radius: 4px;
     cursor: pointer;
 }
-input[type=submit]:hover {
+.form input[type=submit]:hover {
     background-color: #45a049;
 }
-.container {
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
-}
-p {
+.form p {
     text-align: center;
     font-weight: 500;
+}
+.reg .header h1 {
+    text-align: center;
+    font-family: 'Kanit', sans-serif;
+    font-size: 60px;
+    padding-top: 20px;
+}
+.reg .after {
+    text-align: center;
+}
+.reg .after button {
+    margin-top: 10px;
 }

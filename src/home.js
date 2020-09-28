@@ -3,6 +3,6 @@ import './home.css'
 
 export default function Home() {
     return (
-        <h2 class="home-header">Vitajte na stránke nášho muzikálu!</h2>
+        <h2 className="home-header">Vitajte na stránke nášho muzikálu!</h2>
     )
 }

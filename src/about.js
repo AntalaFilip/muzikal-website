@@ -3,8 +3,8 @@ import './about.css'
 
 export default function App() {
     return (
-        <div class="about">
-            <div class="header">
+        <div className="about">
+            <div className="header">
                 <h1>O Muzikáli</h1>
             </div>
             <div id="fact-2">

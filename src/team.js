@@ -3,12 +3,12 @@ import './team.css'
 
 export default function Team() {
     return (
-        <div class="team">
-            <div class="header">
+        <div className="team">
+            <div className="header">
                 <h1>Náš team</h1>
             </div>
             <div>
-                <div class="division herci">
+                <div className="division herci">
                     <h2>Herci</h2> 
                     <p>Adela Zemaníková ako <em>Ashley Cooperová</em></p>
                     <p>Leo Rehúš ako <em>Detektív Brandon Jones</em></p>
@@ -19,7 +19,7 @@ export default function Team() {
                     <p>Matúš Košťál ako <em>postava</em></p>
                     <p>Michal Čmelík ako <em>Steve Green</em></p>
                 </div>
-                <div class="division scenaristi">
+                <div className="division scenaristi">
                     <h2>Scenáristi</h2>
                     <p>Terezka Kršáková</p>
                     <p>Matilda Borovská</p>
@@ -27,24 +27,24 @@ export default function Team() {
                     <p>Zara Halmo</p>
                     <p>Šimon Godarský</p>
                 </div>
-                <div class="division manazeri">
+                <div className="division manazeri">
                     <h2>Manažéri</h2>
                     <p>Filip Antala</p>
                     <p>Daniel Držík</p>
                     <p>Matúš Halák</p>
                     <p>Michal Svoboda</p>
                 </div>
-                <div class="division kulisari">
+                <div className="division kulisari">
                     <h2>Kulisári</h2>
                     <p>Klára Šumská</p>
                     <p>Sofia Kocková</p>
                 </div>
-                <div class="division kostymeri">
+                <div className="division kostymeri">
                     <h2>Kostyméri</h2>
                     <p>Adela Belovičová</p>
                     <p>Zoja Zajvaldová</p>
                 </div>
-                <div class="division hudobnici">
+                <div className="division hudobnici">
                     <h2>Hudobníci</h2>
                     <p>Martin Krchnavý</p>
                     <p>Matúš Košťál</p>
