@@ -2,30 +2,34 @@ const express = require('express');
 const cors = require('cors');
 const mysql = require('mysql');
 const nodemailer = require('nodemailer');
-
-const app = express();
-
 require('dotenv').config();
 
+const app = express();
 app.use(express.json());
 app.use(cors());
 
 const port = process.env.PORT || 5000;
+const SMTPHOST = process.env.SMTPHOST;
+const SMTPUSER = process.env.SMTPUSER;
+const SMTPPASS = process.env.SMTPPASS;
+const DBHOST = process.env.DBHOST;
+const DBUSER = process.env.DBUSER;
+const DBPASS = process.env.DBPASS;
 
 const con = mysql.createConnection({
-    host: process.env.DBHOST,
-    user: process.env.DBUSER,
-    password: process.env.DBPASS,
+    host: DBHOST,
+    user: DBUSER,
+    password: DBPASS,
     database: "tickets"
 })
 
 let transporter = nodemailer.createTransport({
-    host: process.env.SMTPHOST,
+    host: SMTPHOST,
     port: 465,
     secure: true,
     auth: {
-        user: process.env.SMTPUSER,
-        pass: process.env.SMTPPASS,
+        user: SMTPUSER,
+        pass: SMTPPASS,
     },
 });
 
@@ -61,4 +65,6 @@ app.post('/registerticket', (req, res) => {
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
+    console.log(`SMTP Host is ${SMTPHOST}`);
+    console.log(`Database Host is ${DBHOST}`);
 });
