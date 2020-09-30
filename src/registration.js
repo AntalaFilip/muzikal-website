@@ -21,7 +21,7 @@ class Registration extends React.Component {
         if (event.target.checkValidity()) {
             axios ({
                 method: 'post',
-                url: 'http://localhost:5000/registerticket',
+                url: 'http://15.236.199.143:5000/registerticket',
                 headers: { 'content-type': 'application/json'},
                 data: this.state
             })
@@ -37,7 +37,7 @@ class Registration extends React.Component {
         return (
             <div className="reg">
                 <div className="header">
-                    <h1>Rezervujte si lístky!</h1>
+                    <h1>LÍSTKY</h1>
                 </div>
                 <div className="form">
                 {!this.state.done && 
