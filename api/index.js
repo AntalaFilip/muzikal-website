@@ -2,6 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const mysql = require('mysql');
 const nodemailer = require('nodemailer');
+var fs = require('fs');
+var https = require('https');
 require('dotenv').config();
 
 const app = express();
@@ -63,8 +65,9 @@ app.post('/registerticket', (req, res) => {
     });
 });
 
-app.listen(port, () => {
-    console.log(`Server is running on port: ${port}`);
-    console.log(`SMTP Host is ${SMTPHOST}`);
-    console.log(`Database Host is ${DBHOST}`);
-});
+var ssloptions = {
+    key: fs.readFileSync('/var/ssl/selfsigned.key'),
+    cert: fs.readFileSync('/var/ssl/selfsigned.crt')
+}
+
+https.createServer(ssloptions, app).listen(port);

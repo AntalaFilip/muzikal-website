@@ -21,7 +21,7 @@ class Registration extends React.Component {
         if (event.target.checkValidity()) {
             axios ({
                 method: 'post',
-                url: 'http://15.236.199.143:5000/registerticket',
+                url: 'https://15.236.199.143:5000/registerticket',
                 headers: { 'content-type': 'application/json'},
                 data: this.state
             })

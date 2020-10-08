@@ -100,3 +100,9 @@
     border-color: rgb(2, 177, 177);
     margin-bottom: 100px;
 }
+.team .herci .tooltip {
+    border: 2px solid black;
+    float: right;
+    width: 250px;
+    height: 70px;
+}
