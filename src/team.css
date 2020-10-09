@@ -18,6 +18,15 @@
     .herci {
         margin-bottom: auto;
     }
+    .kulisari {
+        margin-top: auto !important;
+    }
+    .kostymeri {
+        margin-top: auto !important;
+    }
+    .hudobnici {
+        margin-top: auto !important;
+    }
 }
 
 @media only screen and (max-width: 1500px) {
@@ -100,9 +109,38 @@
     border-color: rgb(2, 177, 177);
     margin-bottom: 100px;
 }
-.team .herci .tooltip {
-    border: 2px solid black;
-    float: right;
-    width: 250px;
-    height: 70px;
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+.tooltip .tooltiptxt {
+    visibility: hidden;
+    width: 200px;
+    background-color: gray;
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-style: normal;
+
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -100px;
+}
+.tooltip .tooltiptxt::after {
+    content: " ";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: gray transparent transparent transparent;
+}
+.tooltip:hover .tooltiptxt {
+    visibility: visible;
 }
