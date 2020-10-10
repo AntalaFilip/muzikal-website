@@ -1,14 +1,13 @@
 const express = require('express');
-const cors = require('cors');
 const mysql = require('mysql');
 const nodemailer = require('nodemailer');
-var fs = require('fs');
-var https = require('https');
+// var fs = require('fs');
+var http = require('http');
+// var https = require('https');
 require('dotenv').config();
 
 const app = express();
 app.use(express.json());
-app.use(cors());
 
 const port = process.env.PORT || 5000;
 const SMTPHOST = process.env.SMTPHOST;
@@ -65,9 +64,10 @@ app.post('/registerticket', (req, res) => {
     });
 });
 
-var ssloptions = {
+/* var ssloptions = {
     key: fs.readFileSync('/var/ssl/selfsigned.key'),
     cert: fs.readFileSync('/var/ssl/selfsigned.crt')
-}
+} */
 
-https.createServer(ssloptions, app).listen(port);
+http.createServer(app).listen(port, () => console.log(`HTTP listening on ${port}`))
+// https.createServer(ssloptions, app).listen(port + 1, () => console.log(`HTTPS listening on ${port + 1}`));
