@@ -1,14 +1,12 @@
 const express = require('express');
 const mysql = require('mysql');
 const nodemailer = require('nodemailer');
-// var fs = require('fs');
-var http = require('http');
-// var https = require('https');
+const http = require('http');
+const auth = require('./auth');
 require('dotenv').config();
 
 const app = express();
 app.use(express.json());
-
 const port = process.env.PORT || 5000;
 const SMTPHOST = process.env.SMTPHOST;
 const SMTPUSER = process.env.SMTPUSER;
@@ -17,7 +15,7 @@ const DBHOST = process.env.DBHOST;
 const DBUSER = process.env.DBUSER;
 const DBPASS = process.env.DBPASS;
 
-const con = mysql.createConnection({
+const tickets = mysql.createConnection({
     host: DBHOST,
     user: DBUSER,
     password: DBPASS,
@@ -33,16 +31,19 @@ let transporter = nodemailer.createTransport({
         pass: SMTPPASS,
     },
 });
-
 app.post('/registerticket', (req, res) => {
     var name = req.body.name;
     var email = req.body.email;
     var qty = req.body.qty;
     var origin = req.body.origin;
+    if (!name || !email || !qty || !origin) {
+        res.status(400).send(`Empty values`);
+        return;
+    }
 
     var sql = `INSERT INTO tickets (name, email, qty, origin, state) VALUES ('${name}', '${email}', '${qty}', '${origin}', 'RESERVED')`;
     
-    con.query(sql, function (err, result) {
+    tickets.query(sql, function (err, result) {
         if (err) {
             res.status(500).send('Failed to insert into database')
             throw err;
@@ -64,10 +65,8 @@ app.post('/registerticket', (req, res) => {
     });
 });
 
-/* var ssloptions = {
-    key: fs.readFileSync('/var/ssl/selfsigned.key'),
-    cert: fs.readFileSync('/var/ssl/selfsigned.crt')
-} */
+app.post('/register', auth.login);
+app.post('/login', auth.register);
+
 
 http.createServer(app).listen(port, () => console.log(`HTTP listening on ${port}`))
-// https.createServer(ssloptions, app).listen(port + 1, () => console.log(`HTTPS listening on ${port + 1}`));
