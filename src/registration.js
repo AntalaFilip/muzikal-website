@@ -21,7 +21,7 @@ class Registration extends React.Component {
         if (event.target.checkValidity()) {
             axios ({
                 method: 'post',
-                url: 'https://15.236.199.143:5000/registerticket',
+                url: 'https://backend.muzikalvrazdapodlaobete.sk/registerticket',
                 headers: { 'content-type': 'application/json'},
                 data: this.state
             })
@@ -40,7 +40,7 @@ class Registration extends React.Component {
                     <h1>LÍSTKY</h1>
                 </div>
                 <div className="form">
-                {!this.state.done && 
+                {!this.state.done && !this.state.error &&
                     <form 
                         onSubmit={this.handleSubmit}
                     >
@@ -79,6 +79,10 @@ class Registration extends React.Component {
                             <em>Psst, skontrolujte si email :)</em><br/>
                             <button>Nová rezervácia</button>
                         </div> }
+                        {this.state.error && 
+                        <div className="after">
+                            <p>Ospravedlňujeme sa, ale niečo sa pokazilo.<br/>Ak problém pretrváva, napíšte nám</p>
+                        </div>}
                     </div>
                 </div>
             </div>
