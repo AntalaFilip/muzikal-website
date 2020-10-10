@@ -55,8 +55,8 @@ app.post('/registerticket', (req, res) => {
             to: req.body.email,
             bcc: "rezervacie@muzikalvrazdapodlaobete.sk",
             subject: `Rezervácia č. ${id}`,
-            text: `Dobrý deň, ${name}. \r\n Vašu rezerváciu (${id}) sme úspešne zaznamenali. \r\n Ďakujeme vám - tím muzikálu Vražda podľa obete.`,
-            html: `<p>Dobrý deň, ${name}.</p><br/><p>Vašu rezerváciu (${id}) sme úspešne zaznamenali.</p><br/><p>Ďakujeme vám - tím muzikálu Vražda podľa obete</p>`,
+            text: `Dobrý deň, ${name}. \r\n Vašu rezerváciu (č. ${id}) sme úspešne zaznamenali. \r\n Ďakujeme vám - tím muzikálu Vražda podľa obete.`,
+            html: `<p>Dobrý deň, ${name}.</p><br/><p>Vašu rezerváciu (č. ${id}) sme úspešne zaznamenali.</p><br/><p>Ďakujeme vám - tím muzikálu Vražda podľa obete</p>`,
         });
         res.status(200).send({
             "sent": true
