@@ -14,10 +14,24 @@ class Registration extends React.Component {
             error: null
         }
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.resetForm = this.resetForm.bind(this);
+    }
+    resetForm(event) {
+        this.setState({
+            name: '',
+            email: '',
+            qty: '',
+            origin: '',
+            done: false,
+            error: null
+        })
+        var ele = document.getElementsByName("origin");
+        for(var i=0;i<ele.length;i++) {
+            ele[i].checked = false;
+        }
     }
     handleSubmit(event) {
         event.preventDefault();
-        console.log('t');
         if (event.target.checkValidity()) {
             axios ({
                 method: 'post',
@@ -30,7 +44,7 @@ class Registration extends React.Component {
                     done: result.data.sent
                 })
             })
-            .catch(error => this.setState({ error: error.message}));
+            .catch(error => this.setState({ error: error.message }));
         }
     }
     render() {
@@ -59,12 +73,12 @@ class Registration extends React.Component {
                         onChange={e => this.setState({ email: e.target.value })}
                         required
                     />
-                    <input type="radio" id="origin int" name="origin" value="int" 
+                    <input type="radio" id="origin-int" name="origin" value="int" 
                         onChange={e => this.setState({ origin: e.target.value })}
                         required
                     />
                     <label htmlFor="int">Mám dieťa vo Felixe / som z Felixu</label><br/>
-                    <input type="radio" id="origin ext" name="origin" value="ext" 
+                    <input type="radio" id="origin-ext" name="origin" value="ext" 
                         onChange={e => this.setState({ origin: e.target.value })}
                         required
                     />
@@ -77,7 +91,7 @@ class Registration extends React.Component {
                         <div className="after">
                             <p>Vaša rezervácia bola zaevidovaná, ďakujeme!</p>
                             <em>Psst, skontrolujte si email :)</em><br/>
-                            <button>Nová rezervácia</button>
+                            <button onClick={this.resetForm}>Nová rezervácia</button>
                         </div> }
                         {this.state.error && 
                         <div className="after">
