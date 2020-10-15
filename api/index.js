@@ -3,10 +3,12 @@ const mysql = require('mysql');
 const nodemailer = require('nodemailer');
 const http = require('http');
 const auth = require('./auth');
-require('dotenv').config();
+const cors = require('cors');
+require('dotenv').config({path: '/var/www/backend/.env'});
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 const port = process.env.PORT || 5000;
 const SMTPHOST = process.env.SMTPHOST;
 const SMTPUSER = process.env.SMTPUSER;
@@ -65,8 +67,9 @@ app.post('/registerticket', (req, res) => {
     });
 });
 
-app.post('/register', auth.login);
-app.post('/login', auth.register);
+app.post('/register', auth.register);
+app.post('/login', auth.login);
+app.post('/auth', auth.reqauth);
 
 
 http.createServer(app).listen(port, () => console.log(`HTTP listening on ${port}`))
