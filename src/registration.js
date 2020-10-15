@@ -1,6 +1,7 @@
 import React from 'react';
 import './registration.css'
 import axios from 'axios';
+require('dotenv').config({path: '/var/www/backend/.env'});
 
 class Registration extends React.Component {
     constructor(props) {
@@ -35,7 +36,7 @@ class Registration extends React.Component {
         if (event.target.checkValidity()) {
             axios ({
                 method: 'post',
-                url: 'https://backend.muzikalvrazdapodlaobete.sk/registerticket',
+                url: `${process.env.BACKEND}registerticket`,
                 headers: { 'content-type': 'application/json'},
                 data: this.state
             })
