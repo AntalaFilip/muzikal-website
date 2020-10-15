@@ -11,6 +11,7 @@ import About from './about';
 import Team from './team';
 import Registration from './registration';
 import Contact from './contact'
+import Admin from './admin';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -18,6 +19,7 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
+
 export default function App() {
   return (
     <Router>
@@ -33,6 +35,9 @@ export default function App() {
         </Route>
         <Route path="/contact">
           <Contact />
+        </Route>
+        <Route path="/admin">
+          <Admin />
         </Route>
         <Route path="/">
           <Home />
