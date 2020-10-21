@@ -8,7 +8,7 @@ require('dotenv').config({path: '/var/www/backend/.env'});
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+// app.use(cors());
 const port = process.env.PORT || 5000;
 const SMTPHOST = process.env.SMTPHOST;
 const SMTPUSER = process.env.SMTPUSER;

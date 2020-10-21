@@ -12,6 +12,7 @@ import Team from './team';
 import Registration from './registration';
 import Contact from './contact'
 import Admin from './admin';
+import AuthContextProvider from './authcontext';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -37,7 +38,9 @@ export default function App() {
           <Contact />
         </Route>
         <Route path="/admin">
-          <Admin />
+          <AuthContextProvider>
+            <Admin />
+          </AuthContextProvider>
         </Route>
         <Route path="/">
           <Home />

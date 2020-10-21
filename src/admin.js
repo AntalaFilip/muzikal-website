@@ -1,11 +1,11 @@
 import React, {useContext, useState} from 'react';
 import './admin.css'
-import {AuthContext} from './AuthContext.js'
+import {AuthContext} from './authcontext'
 require('dotenv').config({path: '/var/www/backend/.env'})
 
 function Admin() {
     
-    /* const {rootState} = useContext(AuthContext);
+    const {rootState} = useContext(AuthContext);
     const {isAuth} = rootState;
 
     if (isAuth) {
@@ -15,31 +15,41 @@ function Admin() {
             </div>
         )
     } 
-    else  */return(<Login/>)
+    else return(<Login/>)
 }
 
 function Login() {
 
-    const {login} = useContext(AuthContext);
+    const {loginUser} = useContext(AuthContext);
     
     const initialState = {
-        user: '',
-        pass: '',
+        userInfo:{
+            user:'',
+            pass:'',
+        },
+        errorMsg: null,
+        successMsg: null,
     }
 
-    const [state, setState] = useState(initialState);
+    const [state,setState] = useState(initialState);
 
     const onChangeValue = (e) => {
         setState({
             ...state,
-            [e.target.name]:e.target.value
+            userInfo:{
+                ...state.userInfo,
+                [e.target.name]:e.target.value
+            }
         });
     }
     
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (event.target.checkValidity) {
-            await login(this.state);
+            if (await loginUser(state.userInfo)) {
+
+            }
+            else setState({...state, errorMsg: 'Invalid password'})
         }
     }
     return(
@@ -60,6 +70,10 @@ function Login() {
                     <input type="submit" id="submit" name="login" value="Login"/>
                 </form>
             </div>
+            {state.errorMsg && 
+            <div>
+                <p>Invalid password!</p>
+            </div>}
         </div>
     )
 }

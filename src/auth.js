@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import { auth } from '../api/auth';
 require('dotenv').config('/var/www/backend/.env');
+export const AuthContext = React.createContext();
 
 const Axios = axios.create({
     baseURL: 'https://backend.muzikalvrazdapodlaobete.sk/'
@@ -11,16 +11,16 @@ class AuthContextProvider extends React.Component {
     constructor() {
         super();
         this.checkSession();
-        this.state = {
-            isAuth: true,
-            userData: null
-        }
+    }
+    state = {
+        isAuth: false,
+        userData: null
     }
     auth = async () => {
         const authToken = localStorage.getItem('authToken');
         if (authToken) {
             Axios.defaults.headers.common['Authentication'] = authToken;
-            Axios.get('auth')
+            Axios.post('auth')
             .then(result => {
                 if (result.status === 200) {
                     return result.data;
@@ -33,28 +33,28 @@ class AuthContextProvider extends React.Component {
         return false;
     }
     checkSession = () => {
-        const auth = this.auth();
-        if (auth) {
+        const Auth = this.auth();
+        if (Auth) {
             this.setState({
                 ...this.state,
                 isAuth: true,
-                userData: auth
+                userData: Auth
             })
             return true;
-        } else {
+        } /* else {
             this.setState({
                 ...this.state,
                 isAuth: false,
                 userData: null
             })
             return false;
-        }
+        } */
     }
     login = async (data) => {
         Axios.post('login', data)
         .then(result => {
             if (result.status === 200) {
-                localStorage.setItem('authToken', result.token);
+                localStorage.setItem('authToken', result.data.token);
                 return this.checkSession();
             }
             return false;
@@ -75,12 +75,10 @@ class AuthContextProvider extends React.Component {
             logout: this.logout
         }
         return(
-            <Auth.Provider value={contextValue}>
-            </Auth.Provider>
+            <AuthContext.Provider value={contextValue}>
+                {this.props.children}
+            </AuthContext.Provider>
         )
     }
 }
-
-export const Auth = React.createContext(auth);
-export const CheckSession = React.createContext(auth);
 export default AuthContextProvider;
