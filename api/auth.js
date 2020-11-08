@@ -31,7 +31,7 @@ exports.register = async (req, res) => {
 exports.login = async (req, res) => {
     const user = req.body.user;
     const pass = req.body.pass;
-    console.log(`Handling login: ${user}, ${pass}`)
+    console.log(`Handling login: ${user}`)
     con.query(`SELECT * FROM muzikal WHERE user = ?`, [user], async function (err, results) {
         if (err) {
             res.status(500).send(`An error has ocurred`);
