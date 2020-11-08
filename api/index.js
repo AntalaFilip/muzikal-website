@@ -16,6 +16,7 @@ const SMTPPASS = process.env.SMTPPASS;
 const DBHOST = process.env.DBHOST;
 const DBUSER = process.env.DBUSER;
 const DBPASS = process.env.DBPASS;
+const REGSECRET = process.env.REGSECRET;
 
 const tickets = mysql.createConnection({
     host: DBHOST,
@@ -33,13 +34,17 @@ let transporter = nodemailer.createTransport({
         pass: SMTPPASS,
     },
 });
-app.post('/registerticket', (req, res) => {
+app.post('/tickets/register', (req, res) => {
     var name = req.body.name;
     var email = req.body.email;
     var qty = req.body.qty;
     var origin = req.body.origin;
     if (!name || !email || !qty || !origin) {
         res.status(400).send(`Empty values`);
+        return;
+    }
+    if (req.headers.authorization !== REGSECRET) {
+        res.status(401).send();
         return;
     }
 
