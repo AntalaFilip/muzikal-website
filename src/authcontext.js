@@ -1,64 +1,36 @@
-import React, { createContext,Component } from "react";
+import React, { createContext, Component } from "react";
 import axios from 'axios'
 export const AuthContext = createContext();
 
 // Define the base URL
 const Axios = axios.create({
-    baseURL: 'https://backend.muzikalvrazdapodlaobete.sk/',
+    baseURL: 'https://backend.felixmuzikal.sk/',
 });
 
-class AuthContextProvider extends Component{
-    constructor(){
+class AuthContextProvider extends Component {
+    constructor() {
         super();
-        this.isLoggedIn();
+        this.auth();
     }
-
-    // Root State
     state = {
-        showLogin:true,
-        isAuth:false,
-        theUser:null,
+        isAuth: false,
+        data: null,
     }
-    
-    // Toggle between Login & Signup page
-    toggleNav = () => {
-        const showLogin = !this.state.showLogin;
-        this.setState({
-            ...this.state,
-            showLogin
-        })
-    }
-
-    // On Click the Log out button
-    logoutUser = () => {
+    logout = () => {
         localStorage.removeItem('loginToken');
         this.setState({
             ...this.state,
-            isAuth:false
+            isAuth: false
         })
     }
-
-    registerUser = async (user) => {
-
-        // Sending the user registration request
-        const register = await Axios.post('register',{
-            name:user.name,
-            email:user.email,
-            password:user.password 
-        });
-
-        return register.data;
-    }
-
-
-    loginUser = async (user) => {
-
-        // Sending the user Login request
-        Axios.post('login', user)
-        .then(result => {
+    login = async (user) => {
+        Axios.post('login', {
+            user: user.user,
+            pass: user.pass,
+        }).then(result => {
             if (result.status === 200) {
                 localStorage.setItem('loginToken', result.data.token);
-                this.isLoggedIn();
+                this.auth();
                 return result.data;
             }
             else {
@@ -66,43 +38,34 @@ class AuthContextProvider extends Component{
             }
         })
     }
+    auth = async () => {
+        const token = localStorage.getItem('loginToken');
 
-    // Checking user logged in or not
-    isLoggedIn = async () => {
-        const loginToken = localStorage.getItem('loginToken');
-
-        // If inside the local-storage has the JWT token
-        if(loginToken){
-
-            //Adding JWT token to axios default header
-            Axios.defaults.headers.common['Authorization'] = loginToken;
-
-            // Fetching the user information
+        if (token) {
+            Axios.defaults.headers.common['Authorization'] = token;
             Axios.post('auth')
-            .then(result => {
-                if(result.status === 200){
-                    this.setState({
-                        ...this.state,
-                        isAuth:true,
-                        theUser:result.data.user
-                    });
-                    console.log(`Logged in as ${this.state.theUser}`);
-                }
-                console.log(`Auth failed`);
-            })
+                .then(result => {
+                    if (result.status === 200) {
+                        this.setState({
+                            ...this.state,
+                            isAuth: true,
+                            data: result.data
+                        });
+                        // console.log(`Logged in as ${this.state.user.user}`);
+                    }
+                })
         }
+        return false;
     }
 
-    render(){
+    render() {
         const contextValue = {
-            rootState:this.state,
-            toggleNav:this.toggleNav,
-            isLoggedIn:this.isLoggedIn,
-            registerUser:this.registerUser,
-            loginUser:this.loginUser,
-            logoutUser:this.logoutUser
+            state: this.state,
+            auth: this.auth,
+            login: this.login,
+            logout: this.logout
         }
-        return(
+        return (
             <AuthContext.Provider value={contextValue}>
                 {this.props.children}
             </AuthContext.Provider>

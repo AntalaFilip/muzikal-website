@@ -5,9 +5,10 @@ const jwt = require('jsonwebtoken');
 
 const con = mysql.createConnection({
     host: process.env.DBHOST,
+    port: process.env.DBPORT,
     user: process.env.DBUSER,
     password: process.env.DBPASS,
-    database: "users"
+    database: "felixmuzikal0"
 })
 
 exports.register = async (req, res) => {
@@ -17,7 +18,7 @@ exports.register = async (req, res) => {
         "user": req.body.user,
         "pass": pass
     }
-    con.query(`INSERT INTO muzikal SET ?`, users, (err, results) => {
+    con.query(`INSERT INTO users SET ?`, users, (err, results) => {
         if (err) {
             res.status(400).send(`An error has ocurred: ${err}`);
         }
@@ -32,7 +33,7 @@ exports.login = async (req, res) => {
     const user = req.body.user;
     const pass = req.body.pass;
     console.log(`Handling login: ${user}`)
-    con.query(`SELECT * FROM muzikal WHERE user = ?`, [user], async function (err, results) {
+    con.query(`SELECT * FROM users WHERE user = ?`, [user], async function (err, results) {
         if (err) {
             res.status(500).send(`An error has ocurred`);
             throw err;
@@ -42,18 +43,19 @@ exports.login = async (req, res) => {
                 const comparison = await bcrypt.compare(pass, results[0].pass);
                 if (comparison) {
                     const token = jwt.sign({
-                        user: user
-                    },
-                    process.env.AUTHKEY, {
+                        user: user,
+                        fname: results[0].fname,
+                        lname: results[0].lname
+                    }, process.env.AUTHKEY, {
                         expiresIn: '1h',
                         issuer: process.env.ISSUER
-                    }
-                    )
+                    });
                     res.status(200).send({
-                        "user": `${results[0].user}`,
+                        "user": user,
+                        "fname": results[0].fname,
+                        "lname": results[0].lname,
                         "token": token,
                     });
-                    console.log(`Login successful!`)
                 }
                 else res.status(204).send(`Invalid password`);
             }
@@ -70,6 +72,8 @@ exports.reqauth = async (req, res) => {
         if (err) res.status(401).send({"message": `Authentication failed`, "err": err});
         else res.status(200).send({
             "user": decoded.user,
+            "fname": decoded.fname,
+            "lname": decoded.lname,
             "message": `Authentication successful`
         });
     })

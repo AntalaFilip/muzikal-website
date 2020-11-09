@@ -14,7 +14,14 @@
 .about-div {
     text-align: center;
 }
-
+.about #fact-1 {
+    border: 2px solid red;
+    float: left;
+    margin-top: 75px;
+    margin-left: 75px;
+    padding: 16px;
+    width: 640px;
+}
 .about #fact-2 {
     border: 2px solid rgb(243, 243, 6);
     float: right;

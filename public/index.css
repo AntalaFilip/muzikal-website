@@ -27,7 +27,7 @@
     position: sticky;
     border-radius: 15px;
 }
-.nav button {
+.nav a {
     float: left;
     background-color: darkslategray;
     border: none;
@@ -41,7 +41,7 @@
     font-size: 16px;
     transition-duration: 0.5s;
 }
-.nav button:hover {
+.nav a:hover {
     background-color: white;
     color: black;
     cursor: pointer;

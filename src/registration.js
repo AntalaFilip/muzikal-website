@@ -12,7 +12,8 @@ class Registration extends React.Component {
             qty: '',
             origin: '',
             done: false,
-            error: null
+            error: null,
+            enabled: false,
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.resetForm = this.resetForm.bind(this);
@@ -36,8 +37,8 @@ class Registration extends React.Component {
         if (event.target.checkValidity()) {
             axios ({
                 method: 'post',
-                url: `${process.env.BACKEND}registerticket`,
-                headers: { 'content-type': 'application/json'},
+                url: `${process.env.BACKEND}tickets/register`,
+                headers: { 'content-type': 'application/json', 'Authorization': process.env.REGSECRET },
                 data: this.state
             })
             .then(result => {
@@ -54,8 +55,11 @@ class Registration extends React.Component {
                 <div className="header">
                     <h1>LÍSTKY</h1>
                 </div>
+                <div className="text">
+
+                </div>
                 <div className="form">
-                {!this.state.done && !this.state.error &&
+                {!this.state.done && !this.state.error && this.state.enabled &&
                     <form 
                         onSubmit={this.handleSubmit}
                     >
@@ -98,6 +102,11 @@ class Registration extends React.Component {
                         <div className="after">
                             <p>Ospravedlňujeme sa, ale niečo sa pokazilo.<br/>Ak problém pretrváva, napíšte nám</p>
                         </div>}
+                        {!this.state.enabled &&
+                        <div className="after">
+                            <p>Rezervácie sú momentálne uzavreté!</p>
+                        </div>
+                        }
                     </div>
                 </div>
             </div>

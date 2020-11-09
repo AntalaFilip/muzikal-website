@@ -1,14 +1,17 @@
 import React from 'react';
 import './about.css'
 
-export default function App() {
+export default function About() {
     return (
         <div className="about">
             <div className="header">
                 <h1>O Muzikáli</h1>
             </div>
+            <div id="fact-1">
+                <p>pútač</p>
+            </div>
             <div id="fact-2">
-                <p>Toto je už náš druhý muzikál, prvý (Muzikál ŠľakMaTraf) sme odohrali pred dvoma rokmi (4.6.18) v spolupráci s Plameniakmi, tiež pod vedením Dávida Králika. Bol to zároveň aj prvý muzikál v histórii Felixu!</p>
+                <p>Toto je už náš druhý muzikál, prvý (Muzikál ŠľakMaTraf) sme odohrali pred dvoma rokmi (4.6.18) v spolupráci s Plameniakmi a tiež pod vedením Dávida Králika. Bol to zároveň aj prvý muzikál v histórii Felixu!</p>
                 <br/>
                 <p>Minule vás prišlo neuveriteľných 270, čo myslíte, prekonáme to?</p>
             </div>

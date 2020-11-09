@@ -17,44 +17,22 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <!--- Navigation bar -->
-    <nav class="nav">
-      <button onclick="redirHome()">Domov</button>
-      <button onclick="redirAbout()">O projekte</button>
-      <button onclick="redirRegistration()">Lístky</button>
-      <button onclick="redirBlog()">Blog</button>
-      <button style="float: right;" onclick="redirContact()">Kontakt</button>
-      <button style="float: right;" onclick="redirTeam()">Náš team</button>
-    </nav>
+    <!-- <nav class="nav">
+      <button onclick="location.href = '/'">Domov</button>
+      <button onclick="location.href = '/about'">O muzikáli</button>
+      <button onclick="location.href = '/sponzori'">Sponzori</button>
+      <button onclick="location.href = '/registration'">Lístky</button>
+      <button onclick="location.href = 'http://blog.sovy.felixmuzikal.sk'">Blog</button>
+      <button style="float: right;" onclick="location.href = '/contact'">Kontakt</button>
+      <button style="float: right;" onclick="location.href = '/team'">Náš team</button>
+    </nav> -->
     <!--- Rendered by React -->
     <div id="root" ></div>
     <!--- Footer -->
     <footer class="footer">
       <div class="footer-div">
-        <small class="footer-text" onclick="redirAdmin()">Designed by Filip Antala</small>
+        <small class="footer-text" onclick="location.href = '/admin'">Designed by Filip Antala</small>
       </div>
     </footer>
   </body>
-  <script>
-    function redirHome() {
-      location.href = "/";
-    }
-    function redirAbout() {
-      location.href = "/about";
-    }
-    function redirRegistration() {
-      location.href = "/registration";
-    }
-    function redirBlog() {
-      location.href = "http://blog.muzikalvrazdapodlaobete.sk";
-    }
-    function redirContact() {
-      location.href = "/contact";
-    }
-    function redirTeam() {
-      location.href = "/team";
-    }
-    function redirAdmin() {
-      location.href = "/admin"
-    }
-  </script>
 </html>
