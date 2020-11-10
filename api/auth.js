@@ -14,9 +14,12 @@ const con = mysql.createConnection({
 exports.register = async (req, res) => {
     const pass = await bcrypt.hash(req.body.pass, await bcrypt.genSalt());
     const users = {
-        "name": req.body.name,
+        "fname": req.body.fname,
+        "lname": req.body.lname,
         "user": req.body.user,
-        "pass": pass
+        "pass": pass,
+        "class": req.body.class,
+        "auth": req.body.auth,
     }
     con.query(`INSERT INTO users SET ?`, users, (err, results) => {
         if (err) {
