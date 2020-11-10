@@ -1,5 +1,7 @@
 import React, { createContext, Component } from "react";
-import axios from 'axios'
+import axios from 'axios';
+import { instanceOf } from 'prop-types';
+import { withCookies, Cookies } from 'react-cookie';
 export const AuthContext = createContext();
 
 // Define the base URL
@@ -8,8 +10,11 @@ const Axios = axios.create({
 });
 
 class AuthContextProvider extends Component {
-    constructor() {
-        super();
+    static propTypes = {
+        cookies: instanceOf(Cookies).isRequired
+    }
+    constructor(props) {
+        super(props);
         this.auth();
     }
     state = {
@@ -17,19 +22,21 @@ class AuthContextProvider extends Component {
         data: null,
     }
     logout = () => {
-        localStorage.removeItem('loginToken');
+        const { cookies } = this.props;
+        cookies.remove('sessionToken');
         this.setState({
             ...this.state,
             isAuth: false
         })
     }
     login = async (user) => {
+        const { cookies } = this.props;
         Axios.post('login', {
             user: user.user,
             pass: user.pass,
         }).then(result => {
             if (result.status === 200) {
-                localStorage.setItem('loginToken', result.data.token);
+                cookies.set('sessionToken', result.data.token);
                 this.auth();
                 return result.data;
             }
@@ -39,7 +46,8 @@ class AuthContextProvider extends Component {
         })
     }
     auth = async () => {
-        const token = localStorage.getItem('loginToken');
+        const { cookies } = this.props;
+        const token = cookies.get('sessionToken');
 
         if (token) {
             Axios.defaults.headers.common['Authorization'] = token;
@@ -52,7 +60,7 @@ class AuthContextProvider extends Component {
                             data: result.data
                         });
                         // console.log(`Logged in as ${this.state.user.user}`);
-                    }
+                    } else this.logout();
                 })
         }
         return false;
@@ -74,4 +82,4 @@ class AuthContextProvider extends Component {
 
 }
 
-export default AuthContextProvider;
+export default withCookies(AuthContextProvider);
