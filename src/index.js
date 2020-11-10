@@ -17,6 +17,7 @@ import Contact from './contact';
 import Team from './team';
 import Admin, { Login } from './admin';
 import AuthContextProvider, { AuthContext } from './authcontext';
+import './index.css'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -30,7 +31,7 @@ ReactDOM.render(
 );
 
 export default function App() {
-  const { state, logout } = useContext(AuthContext);
+  const { state } = useContext(AuthContext);
   const { isAuth, data } = state;
   return (
     <Router>
@@ -40,7 +41,7 @@ export default function App() {
         <Link to="/sponsors">Sponzori</Link>
         <Link to="/registration">Lístky</Link>
         <Link to="/blog">Blog</Link>
-        <Link to="/admin" style={{ float: "right" }}>{isAuth ? `${data.fname} ${data.lname}` : "Admin"}</Link>
+        <Link to="/admin" style={{ float: "right" }}>{isAuth ? `${data.fname} ${data.lname}` : "Login"}</Link>
         {/* <Link to="/logout">Logout</Link> */}
         <Link to="/contact" style={{ float: "right" }}>Kontakt</Link>
         <Link to="/team" style={{ float: "right" }}>Náš team</Link>
