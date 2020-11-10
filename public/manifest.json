@@ -2,6 +2,7 @@
   "short_name": "Muzikál Web",
   "name": "Stránka muzikálu Vražda podľa obete",
   "start_url": ".",
+  "homepage": "https://sovy.felixmuzikal.sk/",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
