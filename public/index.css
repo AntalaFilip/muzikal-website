@@ -18,34 +18,6 @@
 .footer-div {
     text-align: center;
 }
-.nav {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: darkslategray;
-    position: sticky;
-    border-radius: 15px;
-}
-.nav a {
-    float: left;
-    background-color: darkslategray;
-    border: none;
-    color: white;
-    padding: 14px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: block;
-    text-transform: uppercase;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 16px;
-    transition-duration: 0.5s;
-}
-.nav a:hover {
-    background-color: white;
-    color: black;
-    cursor: pointer;
-}
 p {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
