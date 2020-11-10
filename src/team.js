@@ -50,6 +50,8 @@ class Team extends React.Component {
                         <p>Martin Krchnavý ako&nbsp;
                             <em id="doctor">Doktor</em>
                         </p>
+                        <p>Andrej Borský ako &nbsp;
+                            <em id="librarian">Knihovník</em></p>
                     </div>
                     <div className="division scenaristi">
                         <h2>Scenáristi</h2>
