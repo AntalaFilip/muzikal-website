@@ -1,4 +1,7 @@
-.home-header {
+.home {
+    text-align: center;
+}
+.home .header {
     padding-top: 20px;
     text-align: center;
     font-family: 'Kanit', sans-serif;
