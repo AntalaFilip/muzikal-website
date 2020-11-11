@@ -104,7 +104,7 @@ class Registration extends React.Component {
                         </div>}
                         {!this.state.enabled &&
                         <div className="after">
-                            <p>Rezervácie sú momentálne uzavreté!</p>
+                            <p>Rezervácie sú ešte uzavreté, spustíme ich začiatkom decembra!</p>
                         </div>
                         }
                     </div>
