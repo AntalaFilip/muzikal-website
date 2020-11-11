@@ -8,7 +8,11 @@ export default function About() {
                 <h1>O Muzikáli</h1>
             </div>
             <div id="fact-1">
-                <p>pútač</p>
+                <p>Príbeh sa odohráva v ... storočí. 
+                Jedná sa o vraždu známeho spisovateľa Steva Greena. 
+                Slávny Americký detektív Brandon Jones sa prichádza pozrieť na zúbok tejto zamotanej situácie. 
+                Kto by niečo také spáchal? Možno jeho najbližší? Či niekto úplne iný...?<br />
+                </p>
             </div>
             <div id="fact-2">
                 <p>Toto je už náš druhý muzikál, prvý (Muzikál ŠľakMaTraf) sme odohrali pred dvoma rokmi (4.6.18) v spolupráci s Plameniakmi a tiež pod vedením Dávida Králika. Bol to zároveň aj prvý muzikál v histórii Felixu!</p>
