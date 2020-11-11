@@ -8,7 +8,7 @@ export default function About() {
                 <h1>O Muzikáli</h1>
             </div>
             <div id="fact-1">
-                <p>Príbeh sa odohráva v ... storočí. 
+                <p>Príbeh sa odohráva v 19. storočí. 
                 Jedná sa o vraždu známeho spisovateľa Steva Greena. 
                 Slávny Americký detektív Brandon Jones sa prichádza pozrieť na zúbok tejto zamotanej situácie. 
                 Kto by niečo také spáchal? Možno jeho najbližší? Či niekto úplne iný...?<br />
