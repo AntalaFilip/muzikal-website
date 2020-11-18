@@ -12,7 +12,7 @@ export default function Contact() {
                 <p>Lístky: <a href="mailto:rezervacie@sovy.felixmuzikal.sk">rezervacie@sovy.felixmuzikal.sk</a></p>
                 <p>Sponzorstvo: <a href="mailto:sponzorstvo@sovy.felixmuzikal.sk">sponzorstvo@sovy.felixmuzikal.sk</a></p>
                 <p>Manažéri: <a href="mailto:manazeri@sovy.felixmuzikal.sk">manazeri@sovy.felixmuzikal.sk</a></p>
-                {/* <p>Konkrétne: meno.priezvisko@sovy.felixmuzikal.sk</p> */}
+                <p>Konkrétne: meno.priezvisko@sovy.felixmuzikal.sk</p>
             </div>
             <div className="text felix">
                 <a href="http://felix.edupage.org"><h2>Škola Felix</h2></a>
